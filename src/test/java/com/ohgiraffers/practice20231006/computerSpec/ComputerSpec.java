@@ -14,5 +14,4 @@ public class ComputerSpec {
     @Column(name = "CPU")
     private String cpu;
 
-    @Column(name = "")
 }
