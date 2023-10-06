@@ -10,4 +10,9 @@ public class ComputerSpec {
     @Column(name = "COM_SPEC_NO")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int comSpecNo;
+
+    @Column(name = "CPU")
+    private String cpu;
+
+    @Column(name = "")
 }
