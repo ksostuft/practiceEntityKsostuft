@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/jpamapping
+    url: jdbc:mysql://localhost:3306/computer_spec
     username: ohgiraffers
     password: ohgiraffers
   jpa:
