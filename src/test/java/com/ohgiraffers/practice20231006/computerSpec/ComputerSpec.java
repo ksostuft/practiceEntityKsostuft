@@ -11,7 +11,24 @@ public class ComputerSpec {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int comSpecNo;
 
-    @Column(name = "CPU")
-    private String cpu;
+    @Embedded
+    private CPUSpec cpuSpec;
 
+    @Embedded
+    private GPUSpec gpuSpec;
+
+    @Column
+    private String memory;
+
+    @Column
+    private String motherBoard;
+
+    @Embedded
+    Storage storage;
+
+    @Column
+    private String psu;
+
+    @Column
+    private String ComCase;
 }
