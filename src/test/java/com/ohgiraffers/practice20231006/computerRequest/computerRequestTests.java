@@ -28,6 +28,7 @@ public class computerRequestTests {
                         "NVIDIA",
                         16,
                         "MSI MAG B760M 박격포",
+                        "INTEL",
                         "SK하이닉스 Platinum P41 M.2 NVMe",
                         "마이크로닉스 Classic II 풀체인지 800W 80PLUS BRONZE 230V EU",
                         "BRAVOTEC GUARDIAN 3100M V2 타이탄 글래스"
@@ -36,8 +37,8 @@ public class computerRequestTests {
     }
     @ParameterizedTest
     @MethodSource("getComSpec")
-    void testInsertComSpec(String company, String cpuName, CPU_MFR cpuMfr, String gpuCardName, int gpuCoreAmount, int gptMemorySize, int gpuBoostClock, GPU_MFR gpuMfr, int memory, String motherBoard, String storage, String psu, String comCase) {
-        ComputerSpecRequestDTO computerSpecRequestDTO = new ComputerSpecRequestDTO(company, cpuName, cpuMfr,  gpuCardName, gpuCoreAmount, gptMemorySize, gpuBoostClock, gpuMfr, memory, motherBoard, storage, psu, comCase);
+    void testInsertComSpec(String company, String cpuName, CPU_MFR cpuMfr, String gpuCardName, int gpuCoreAmount, int gptMemorySize, int gpuBoostClock, GPU_MFR gpuMfr, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
+        ComputerSpecRequestDTO computerSpecRequestDTO = new ComputerSpecRequestDTO(company, cpuName, cpuMfr,  gpuCardName, gpuCoreAmount, gptMemorySize, gpuBoostClock, gpuMfr, memory, motherBoard, mbCompatible, storage, psu, comCase);
         Assertions.assertDoesNotThrow(
                 () -> computerSpecInsertService.registComSpec(computerSpecRequestDTO)
         );

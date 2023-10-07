@@ -36,6 +36,10 @@ public class ComputerSpec {
     @Column(name = "MOTHERBOARD")
     private String motherBoard;
 
+    @Column(name = "MB_COMPATIBLE")
+    @Enumerated(EnumType.STRING)
+    private MB_Compatible mbCompatible;
+
     @Column(name = "STORAGE")
     private String storage;
 
@@ -48,7 +52,7 @@ public class ComputerSpec {
     public ComputerSpec() {
     }
 
-    public ComputerSpec(String company, String cpuName, CPU_MFR cpuMfr, GPUSpec gpuSpec, GPU_MFR gpuMfr, int memory, String motherBoard, String storage, String psu, String comCase) {
+    public ComputerSpec(String company, String cpuName, CPU_MFR cpuMfr, GPUSpec gpuSpec, GPU_MFR gpuMfr, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
         this.company = company;
         this.cpuName = cpuName;
         this.cpuMfr = cpuMfr;
@@ -56,6 +60,7 @@ public class ComputerSpec {
         this.gpuMfr = gpuMfr;
         this.memory = memory;
         this.motherBoard = motherBoard;
+        this.mbCompatible = mbCompatible;
         this.storage = storage;
         this.psu = psu;
         this.comCase = comCase;
@@ -93,6 +98,10 @@ public class ComputerSpec {
         return motherBoard;
     }
 
+    public MB_Compatible getMbCompatible() {
+        return mbCompatible;
+    }
+
     public String getStorage() {
         return storage;
     }
@@ -116,6 +125,7 @@ public class ComputerSpec {
                 ", gpuMfr=" + gpuMfr +
                 ", memory=" + memory +
                 ", motherBoard='" + motherBoard + '\'' +
+                ", mbCompatible=" + mbCompatible +
                 ", storage='" + storage + '\'' +
                 ", psu='" + psu + '\'' +
                 ", comCase='" + comCase + '\'' +

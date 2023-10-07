@@ -11,6 +11,7 @@ public class ComputerSpecRequestDTO {
     private GPU_MFR gpuMfr;
     private int memory;
     private String motherBoard;
+    private MB_Compatible mbCompatible;
     private String storage;
     private String psu;
     private String comCase;
@@ -18,7 +19,7 @@ public class ComputerSpecRequestDTO {
     public ComputerSpecRequestDTO() {
     }
 
-    public ComputerSpecRequestDTO(String company, String cpuName, CPU_MFR cpuMfr, String gpuCardName, int gpuCoreAmount, double gpuMemorySize, int gpuBoostClock, GPU_MFR gpuMfr, int memory, String motherBoard, String storage, String psu, String comCase) {
+    public ComputerSpecRequestDTO(String company, String cpuName, CPU_MFR cpuMfr, String gpuCardName, int gpuCoreAmount, double gpuMemorySize, int gpuBoostClock, GPU_MFR gpuMfr, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
         this.company = company;
         this.cpuName = cpuName;
         this.cpuMfr = cpuMfr;
@@ -29,6 +30,7 @@ public class ComputerSpecRequestDTO {
         this.gpuMfr = gpuMfr;
         this.memory = memory;
         this.motherBoard = motherBoard;
+        this.mbCompatible = mbCompatible;
         this.storage = storage;
         this.psu = psu;
         this.comCase = comCase;
@@ -114,6 +116,14 @@ public class ComputerSpecRequestDTO {
         this.motherBoard = motherBoard;
     }
 
+    public MB_Compatible getMbCompatible() {
+        return mbCompatible;
+    }
+
+    public void setMbCompatible(MB_Compatible mbCompatible) {
+        this.mbCompatible = mbCompatible;
+    }
+
     public String getStorage() {
         return storage;
     }
@@ -151,6 +161,7 @@ public class ComputerSpecRequestDTO {
                 ", gpuMfr=" + gpuMfr +
                 ", memory=" + memory +
                 ", motherBoard='" + motherBoard + '\'' +
+                ", mbCompatible=" + mbCompatible +
                 ", storage='" + storage + '\'' +
                 ", psu='" + psu + '\'' +
                 ", comCase='" + comCase + '\'' +

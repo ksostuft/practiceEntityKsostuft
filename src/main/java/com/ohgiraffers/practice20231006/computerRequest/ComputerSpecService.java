@@ -29,6 +29,7 @@ public class ComputerSpecService {
                 computerSpecRequestDTO.getGpuMfr(),
                 computerSpecRequestDTO.getMemory(),
                 computerSpecRequestDTO.getMotherBoard(),
+                computerSpecRequestDTO.getMbCompatible(),
                 computerSpecRequestDTO.getStorage(),
                 computerSpecRequestDTO.getPsu(),
                 computerSpecRequestDTO.getComCase()
