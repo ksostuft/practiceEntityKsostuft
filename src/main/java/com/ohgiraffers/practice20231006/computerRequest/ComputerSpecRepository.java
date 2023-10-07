@@ -14,9 +14,6 @@ public class ComputerSpecRepository {
     public void save(ComputerSpec computerSpec) {
         manager.persist(computerSpec);
     }
-    public void contain(ComputerSpec computerSpec) {
-        manager.contains(computerSpec);
-    }
 
     public ComputerSpec find(int no) {
         ComputerSpec computerSpec = manager.find(ComputerSpec.class, no);
@@ -34,7 +31,6 @@ public class ComputerSpecRepository {
     public ComputerSpec modifyCompany(int comSpecNo, String company) {
         ComputerSpec computerSpec = find(comSpecNo);
         computerSpec.setCompany(company);
-        manager.flush();
 
         return computerSpec;
     }

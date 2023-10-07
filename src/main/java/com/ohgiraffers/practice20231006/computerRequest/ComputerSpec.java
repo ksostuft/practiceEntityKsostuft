@@ -45,7 +45,7 @@ public class ComputerSpec {
     @Column(name = "COM_CASE")
     private String comCase;
 
-    public ComputerSpec() {
+    protected ComputerSpec() {
     }
 
     public ComputerSpec(String company, String cpuName, CPU_MFR cpuMfr, GPUSpec gpuSpec, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
