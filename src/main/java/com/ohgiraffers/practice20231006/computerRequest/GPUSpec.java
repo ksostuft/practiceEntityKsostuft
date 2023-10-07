@@ -1,13 +1,16 @@
-package com.ohgiraffers.practice20231006.computerSpec;
+package com.ohgiraffers.practice20231006.computerRequest;
 
 import javax.persistence.Column;
 
 public class GPUSpec {
+
+    @Column(name = "GPU_CARD_NAME")
+    private String gpuCardName;
     @Column(name = "GPU_CORE_AMOUNT")
     private int gpuCoreAmount;
 
     @Column(name = "GPU_MEMORY_SIZE")
-    private int gptMemorySize;
+    private double gptMemorySize;
 
     @Column(name = "GPU_BOOST_CLOCK")
     private double gpuBoostClock;
@@ -15,17 +18,22 @@ public class GPUSpec {
     protected GPUSpec() {
     }
 
-    public GPUSpec(int gpuCoreAmount, int gptMemorySize, double gpuBoostClock) {
+    public GPUSpec(String  gpuCardName, int gpuCoreAmount, double gptMemorySize, double gpuBoostClock) {
+        this.gpuCardName = gpuCardName;
         this.gpuCoreAmount = gpuCoreAmount;
         this.gptMemorySize = gptMemorySize;
         this.gpuBoostClock = gpuBoostClock;
+    }
+
+    public String getGpuCardName() {
+        return gpuCardName;
     }
 
     public int getGpuCoreAmount() {
         return gpuCoreAmount;
     }
 
-    public int getGptMemorySize() {
+    public double getGptMemorySize() {
         return gptMemorySize;
     }
 
@@ -36,7 +44,8 @@ public class GPUSpec {
     @Override
     public String toString() {
         return "GPUSpec{" +
-                "gpuCoreAmount=" + gpuCoreAmount +
+                "gpuCardName=" + gpuCardName +
+                ", gpuCoreAmount=" + gpuCoreAmount +
                 ", gptMemorySize=" + gptMemorySize +
                 ", gpuBoostClock=" + gpuBoostClock +
                 '}';
