@@ -23,11 +23,36 @@ public class GPUSpec {
     }
 
     public GPUSpec(String gpuCardName, int gpuCoreAmount, double gpuMemorySize, int gpuBaseClock, int gpuBoostClock) {
+        isPositiveAndReally(gpuCoreAmount, gpuMemorySize, gpuBaseClock, gpuBoostClock);
         this.gpuCardName = gpuCardName;
         this.gpuCoreAmount = gpuCoreAmount;
         this.gpuMemorySize = gpuMemorySize;
         this.gpuBaseClock = gpuBaseClock;
         this.gpuBoostClock = gpuBoostClock;
+    }
+
+    private void isPositiveAndReally(int gpuCoreAmount, double gpuMemorySize, int gpuBaseClock, int gpuBoostClock) {
+        String message = "";
+        boolean isNegative = false;
+        if(gpuCoreAmount < 2000) {
+            isNegative = true;
+            message += "GPU 코어 수가 2000개 미만입니다.\n";
+        }
+        if(gpuMemorySize < 8) {
+            isNegative = true;
+            message += "GPU 메모리가 8GB 미만입니다.\n";
+        }
+        if(gpuBaseClock < 1000) {
+            isNegative = true;
+            message += "GPU 베이스 클럭이 1000Mhz 미만입니다.\n";
+        }
+        if(gpuBoostClock < gpuBaseClock) {
+            isNegative = true;
+            message += "GPU 부스트 클럭은 베이스 클럭보다 높아야 합니다.\n";
+        }
+        if(isNegative) {
+            throw new IllegalArgumentException(message);
+        }
     }
 
     public String getGpuCardName() {
