@@ -24,9 +24,9 @@ public class ComputerSpecService {
                         computerSpecRequestDTO.getGpuCardName(),
                         computerSpecRequestDTO.getGpuCoreAmount(),
                         computerSpecRequestDTO.getGpuMemorySize(),
+                        computerSpecRequestDTO.getGpuBaseClock(),
                         computerSpecRequestDTO.getGpuBoostClock()
                 ),
-                computerSpecRequestDTO.getGpuMfr(),
                 computerSpecRequestDTO.getMemory(),
                 computerSpecRequestDTO.getMotherBoard(),
                 computerSpecRequestDTO.getMbCompatible(),

@@ -7,8 +7,8 @@ public class ComputerSpecRequestDTO {
     private String gpuCardName;
     private int gpuCoreAmount;
     private double gpuMemorySize;
+    private int gpuBaseClock;
     private int gpuBoostClock;
-    private GPU_MFR gpuMfr;
     private int memory;
     private String motherBoard;
     private MB_Compatible mbCompatible;
@@ -19,15 +19,15 @@ public class ComputerSpecRequestDTO {
     public ComputerSpecRequestDTO() {
     }
 
-    public ComputerSpecRequestDTO(String company, String cpuName, CPU_MFR cpuMfr, String gpuCardName, int gpuCoreAmount, double gpuMemorySize, int gpuBoostClock, GPU_MFR gpuMfr, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
+    public ComputerSpecRequestDTO(String company, String cpuName, CPU_MFR cpuMfr, String gpuCardName, int gpuCoreAmount, double gpuMemorySize, int gpuBaseClock, int gpuBoostClock, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
         this.company = company;
         this.cpuName = cpuName;
         this.cpuMfr = cpuMfr;
         this.gpuCardName = gpuCardName;
         this.gpuCoreAmount = gpuCoreAmount;
         this.gpuMemorySize = gpuMemorySize;
+        this.gpuBaseClock = gpuBaseClock;
         this.gpuBoostClock = gpuBoostClock;
-        this.gpuMfr = gpuMfr;
         this.memory = memory;
         this.motherBoard = motherBoard;
         this.mbCompatible = mbCompatible;
@@ -84,20 +84,20 @@ public class ComputerSpecRequestDTO {
         this.gpuMemorySize = gpuMemorySize;
     }
 
+    public int getGpuBaseClock() {
+        return gpuBaseClock;
+    }
+
+    public void setGpuBaseClock(int gpuBaseClock) {
+        this.gpuBaseClock = gpuBaseClock;
+    }
+
     public int getGpuBoostClock() {
         return gpuBoostClock;
     }
 
     public void setGpuBoostClock(int gpuBoostClock) {
         this.gpuBoostClock = gpuBoostClock;
-    }
-
-    public GPU_MFR getGpuMfr() {
-        return gpuMfr;
-    }
-
-    public void setGpuMfr(GPU_MFR gpuMfr) {
-        this.gpuMfr = gpuMfr;
     }
 
     public int getMemory() {
@@ -157,8 +157,8 @@ public class ComputerSpecRequestDTO {
                 ", gpuCardName='" + gpuCardName + '\'' +
                 ", gpuCoreAmount=" + gpuCoreAmount +
                 ", gpuMemorySize=" + gpuMemorySize +
+                ", gpuBaseClock=" + gpuBaseClock +
                 ", gpuBoostClock=" + gpuBoostClock +
-                ", gpuMfr=" + gpuMfr +
                 ", memory=" + memory +
                 ", motherBoard='" + motherBoard + '\'' +
                 ", mbCompatible=" + mbCompatible +

@@ -26,10 +26,6 @@ public class ComputerSpec {
     @Embedded
     private GPUSpec gpuSpec;
 
-    @Column(name = "GPU_MFR")
-    @Enumerated(EnumType.STRING)
-    private GPU_MFR gpuMfr;
-
     @Column(name = "MEMORY")
     private int memory;
 
@@ -52,12 +48,11 @@ public class ComputerSpec {
     public ComputerSpec() {
     }
 
-    public ComputerSpec(String company, String cpuName, CPU_MFR cpuMfr, GPUSpec gpuSpec, GPU_MFR gpuMfr, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
+    public ComputerSpec(String company, String cpuName, CPU_MFR cpuMfr, GPUSpec gpuSpec, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
         this.company = company;
         this.cpuName = cpuName;
         this.cpuMfr = cpuMfr;
         this.gpuSpec = gpuSpec;
-        this.gpuMfr = gpuMfr;
         this.memory = memory;
         this.motherBoard = motherBoard;
         this.mbCompatible = mbCompatible;
@@ -84,10 +79,6 @@ public class ComputerSpec {
 
     public GPUSpec getGpuSpec() {
         return gpuSpec;
-    }
-
-    public GPU_MFR getGpuMfr() {
-        return gpuMfr;
     }
 
     public int getMemory() {
@@ -122,7 +113,6 @@ public class ComputerSpec {
                 ", cpuName='" + cpuName + '\'' +
                 ", cpuMfr=" + cpuMfr +
                 ", gpuSpec=" + gpuSpec +
-                ", gpuMfr=" + gpuMfr +
                 ", memory=" + memory +
                 ", motherBoard='" + motherBoard + '\'' +
                 ", mbCompatible=" + mbCompatible +

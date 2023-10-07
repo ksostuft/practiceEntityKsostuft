@@ -10,20 +10,23 @@ public class GPUSpec {
     private String gpuCardName;
     @Column(name = "GPU_CORE_AMOUNT")
     private int gpuCoreAmount;
-
     @Column(name = "GPU_MEMORY_SIZE")
-    private double gptMemorySize;
+    private double gpuMemorySize;
+
+    @Column(name = "GPU_BASE_CLOCK")
+    private int gpuBaseClock;
 
     @Column(name = "GPU_BOOST_CLOCK")
-    private double gpuBoostClock;
+    private int gpuBoostClock;
 
     protected GPUSpec() {
     }
 
-    public GPUSpec(String  gpuCardName, int gpuCoreAmount, double gptMemorySize, double gpuBoostClock) {
+    public GPUSpec(String gpuCardName, int gpuCoreAmount, double gpuMemorySize, int gpuBaseClock, int gpuBoostClock) {
         this.gpuCardName = gpuCardName;
         this.gpuCoreAmount = gpuCoreAmount;
-        this.gptMemorySize = gptMemorySize;
+        this.gpuMemorySize = gpuMemorySize;
+        this.gpuBaseClock = gpuBaseClock;
         this.gpuBoostClock = gpuBoostClock;
     }
 
@@ -35,20 +38,25 @@ public class GPUSpec {
         return gpuCoreAmount;
     }
 
-    public double getGptMemorySize() {
-        return gptMemorySize;
+    public double getGpuMemorySize() {
+        return gpuMemorySize;
     }
 
-    public double getGpuBoostClock() {
+    public int getGpuBaseClock() {
+        return gpuBaseClock;
+    }
+
+    public int getGpuBoostClock() {
         return gpuBoostClock;
     }
 
     @Override
     public String toString() {
         return "GPUSpec{" +
-                "gpuCardName=" + gpuCardName +
+                "gpuCardName='" + gpuCardName + '\'' +
                 ", gpuCoreAmount=" + gpuCoreAmount +
-                ", gptMemorySize=" + gptMemorySize +
+                ", gpuMemorySize=" + gpuMemorySize +
+                ", gpuBaseClock=" + gpuBaseClock +
                 ", gpuBoostClock=" + gpuBoostClock +
                 '}';
     }
