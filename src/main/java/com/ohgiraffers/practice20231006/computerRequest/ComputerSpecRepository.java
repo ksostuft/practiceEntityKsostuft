@@ -14,12 +14,21 @@ public class ComputerSpecRepository {
     public void save(ComputerSpec computerSpec) {
         manager.persist(computerSpec);
     }
-    /*public void contain(ComputerSpec computerSpec) {
+    public void contain(ComputerSpec computerSpec) {
         manager.contains(computerSpec);
     }
 
-    public void find(ComputerSpec computerSpec) {
-        manager.find(ComputerSpec.class, computerSpec);
+    public ComputerSpec find(int no) {
+        ComputerSpec computerSpec = manager.find(ComputerSpec.class, no);
+        return computerSpec;
+    }
+
+    public Long findAll() {
+        return getCount(manager);
+    }
+
+    private Long getCount(EntityManager manager) {
+        return manager.createQuery("SELECT COUNT(comSpecNo) FROM ComputerSpec", Long.class).getSingleResult();
     }
 
     public void detach(ComputerSpec computerSpec) {
@@ -36,5 +45,13 @@ public class ComputerSpecRepository {
 
     public void remove(ComputerSpec computerSpec) {
         manager.remove(computerSpec);
-    }*/
+    }
+
+    public ComputerSpec modifyCompany(int comSpecNo, String company) {
+        ComputerSpec computerSpec = find(comSpecNo);
+        computerSpec.setCompany(company);
+        manager.flush();
+
+        return computerSpec;
+    }
 }

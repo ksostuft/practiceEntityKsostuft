@@ -63,8 +63,8 @@ public class ComputerSpec {
     }
 
     private void checkCompatible(CPU_MFR cpuMfr, MB_Compatible mbCompatible) {
-        if(!cpuMfr.equals(mbCompatible)) {
-            throw new IllegalArgumentException("CPU와 메인보드와 호환이 되지 않습니다.");
+        if(!mbCompatible.name().equals(cpuMfr.name())) {
+            throw new IllegalArgumentException("CPU와 메인보드가 호환이 되지 않습니다.");
         }
     }
 
@@ -110,6 +110,10 @@ public class ComputerSpec {
 
     public String getComCase() {
         return comCase;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     @Override

@@ -38,4 +38,17 @@ public class ComputerSpecService {
         computerSpecRepository.save(computerSpec);
     }
 
+    public ComputerSpec findComSpec(int no) {
+        ComputerSpec computerSpec = computerSpecRepository.find(no);
+        return computerSpec;
+    }
+
+    public Long findComSpecCount() {
+        return computerSpecRepository.findAll();
+    }
+
+    @Transactional
+    public ComputerSpec modifyCompany(int comSpecNo, String company) {
+        return computerSpecRepository.modifyCompany(comSpecNo, company);
+    }
 }

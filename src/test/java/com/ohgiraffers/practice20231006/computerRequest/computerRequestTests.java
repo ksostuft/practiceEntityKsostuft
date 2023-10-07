@@ -1,6 +1,7 @@
 package com.ohgiraffers.practice20231006.computerRequest;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -75,5 +76,48 @@ public class computerRequestTests {
         );
     }
 
+    /* insert를 했으니 이제 CRUD를 할 차례 */
 
+    /* select */
+    @ParameterizedTest
+    @CsvSource("1")
+    void testSelectWithComSpecNo0(int no) {
+        Assertions.assertDoesNotThrow(
+                () -> computerSpecInsertService.findComSpec(no)
+        );
+
+        ComputerSpec computerSpec = computerSpecInsertService.findComSpec(no);
+        Assertions.assertEquals(no, computerSpec.getComSpecNo());
+    }
+
+    /* 오류 만들기 */
+    @ParameterizedTest
+    @CsvSource("1000")
+    void testSelectWithComSpecNo1(int no) {
+        Assertions.assertDoesNotThrow(
+                () -> computerSpecInsertService.findComSpec(no)
+        );
+
+        ComputerSpec computerSpec = computerSpecInsertService.findComSpec(no);
+        Assertions.assertEquals(no, computerSpec.getComSpecNo());
+    }
+
+    /* 갯수 조회 */
+    /* 테이블 확인하고 해야 합니다. */
+    @Test
+    void testComSpecCount() {
+        Assertions.assertEquals(2, computerSpecInsertService.findComSpecCount());
+    }
+
+    /* update, 견적준 회사 이름 변경하기 */
+    @ParameterizedTest
+    @CsvSource("1,'컴퓨존'")
+    void testModifyCompany(int comSpecNo, String company) {
+        ComputerSpec computerSpec = computerSpecInsertService.modifyCompany(comSpecNo, company);
+
+        Assertions.assertEquals(company, computerSpec.getCompany());
+    }
+
+    /* 항목 하나 제거하기 */
+    /* 5번 이상 insert 한 다음 하는 것을 추천합니다. */
 }
