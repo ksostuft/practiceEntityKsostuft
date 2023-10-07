@@ -31,6 +31,19 @@ public class ComputerSpecRepository {
         return manager.createQuery("SELECT COUNT(comSpecNo) FROM ComputerSpec", Long.class).getSingleResult();
     }
 
+    public ComputerSpec modifyCompany(int comSpecNo, String company) {
+        ComputerSpec computerSpec = find(comSpecNo);
+        computerSpec.setCompany(company);
+        manager.flush();
+
+        return computerSpec;
+    }
+
+    public void removeComputerSpec(int comSpecNo) {
+        ComputerSpec computerSpec = find(comSpecNo);
+        manager.remove(computerSpec);
+    }
+
     public void detach(ComputerSpec computerSpec) {
         manager.detach(computerSpec);
     }
@@ -41,17 +54,5 @@ public class ComputerSpecRepository {
 
     public void close() {
         manager.close();
-    }
-
-    public void remove(ComputerSpec computerSpec) {
-        manager.remove(computerSpec);
-    }
-
-    public ComputerSpec modifyCompany(int comSpecNo, String company) {
-        ComputerSpec computerSpec = find(comSpecNo);
-        computerSpec.setCompany(company);
-        manager.flush();
-
-        return computerSpec;
     }
 }

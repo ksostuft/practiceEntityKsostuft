@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -90,7 +91,7 @@ public class computerRequestTests {
         Assertions.assertEquals(no, computerSpec.getComSpecNo());
     }
 
-    /* 오류 만들기 */
+    /* 오류 만들기 comSpecNo = 1000 */
     @ParameterizedTest
     @CsvSource("1000")
     void testSelectWithComSpecNo1(int no) {
@@ -106,12 +107,12 @@ public class computerRequestTests {
     /* 테이블 확인하고 해야 합니다. */
     @Test
     void testComSpecCount() {
-        Assertions.assertEquals(2, computerSpecInsertService.findComSpecCount());
+        Assertions.assertEquals(6, computerSpecInsertService.findComSpecCount());
     }
 
     /* update, 견적준 회사 이름 변경하기 */
     @ParameterizedTest
-    @CsvSource("1,'컴퓨존'")
+    @CsvSource("4,'컴퓨존'")
     void testModifyCompany(int comSpecNo, String company) {
         ComputerSpec computerSpec = computerSpecInsertService.modifyCompany(comSpecNo, company);
 
@@ -120,4 +121,12 @@ public class computerRequestTests {
 
     /* 항목 하나 제거하기 */
     /* 5번 이상 insert 한 다음 하는 것을 추천합니다. */
+    /* 테이블 확인하고 해야 합니다. */
+    @ParameterizedTest
+    @ValueSource(ints = {5})
+    void testRemoveComputerSpec(int comSpecNo) {
+        computerSpecInsertService.remove(comSpecNo);
+        Assertions.assertEquals(6, computerSpecInsertService.findComSpecCount());
+        Assertions.assertNull(computerSpecInsertService.findComSpec(comSpecNo));
+    }
 }

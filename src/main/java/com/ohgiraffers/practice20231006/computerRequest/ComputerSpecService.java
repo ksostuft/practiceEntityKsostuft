@@ -51,4 +51,9 @@ public class ComputerSpecService {
     public ComputerSpec modifyCompany(int comSpecNo, String company) {
         return computerSpecRepository.modifyCompany(comSpecNo, company);
     }
+
+    @Transactional
+    public void remove(int comSpecNo) {
+        computerSpecRepository.removeComputerSpec(comSpecNo);
+    }
 }
