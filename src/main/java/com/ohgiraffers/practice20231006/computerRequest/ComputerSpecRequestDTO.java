@@ -3,31 +3,35 @@ package com.ohgiraffers.practice20231006.computerRequest;
 public class ComputerSpecRequestDTO {
     private String company;
     private String cpuName;
+    private CPU_MFR cpuMfr;
     private String gpuCardName;
     private int gpuCoreAmount;
-    private double gptMemorySize;
-    private double gpuBoostClock;
-    private String memory;
+    private double gpuMemorySize;
+    private int gpuBoostClock;
+    private GPU_MFR gpuMfr;
+    private int memory;
     private String motherBoard;
     private String storage;
     private String psu;
-    private String ComCase;
+    private String comCase;
 
     public ComputerSpecRequestDTO() {
     }
 
-    public ComputerSpecRequestDTO(String company, String cpuName, String gpuCardName, int gpuCoreAmount, double gptMemorySize, double gpuBoostClock, String memory, String motherBoard, String storage, String psu, String comCase) {
+    public ComputerSpecRequestDTO(String company, String cpuName, CPU_MFR cpuMfr, String gpuCardName, int gpuCoreAmount, double gpuMemorySize, int gpuBoostClock, GPU_MFR gpuMfr, int memory, String motherBoard, String storage, String psu, String comCase) {
         this.company = company;
         this.cpuName = cpuName;
+        this.cpuMfr = cpuMfr;
         this.gpuCardName = gpuCardName;
         this.gpuCoreAmount = gpuCoreAmount;
-        this.gptMemorySize = gptMemorySize;
+        this.gpuMemorySize = gpuMemorySize;
         this.gpuBoostClock = gpuBoostClock;
+        this.gpuMfr = gpuMfr;
         this.memory = memory;
         this.motherBoard = motherBoard;
         this.storage = storage;
         this.psu = psu;
-        ComCase = comCase;
+        this.comCase = comCase;
     }
 
     public String getCompany() {
@@ -44,6 +48,14 @@ public class ComputerSpecRequestDTO {
 
     public void setCpuName(String cpuName) {
         this.cpuName = cpuName;
+    }
+
+    public CPU_MFR getCpuMfr() {
+        return cpuMfr;
+    }
+
+    public void setCpuMfr(CPU_MFR cpuMfr) {
+        this.cpuMfr = cpuMfr;
     }
 
     public String getGpuCardName() {
@@ -63,26 +75,34 @@ public class ComputerSpecRequestDTO {
     }
 
     public double getGpuMemorySize() {
-        return gptMemorySize;
+        return gpuMemorySize;
     }
 
-    public void setGptMemorySize(double gptMemorySize) {
-        this.gptMemorySize = gptMemorySize;
+    public void setGpuMemorySize(double gpuMemorySize) {
+        this.gpuMemorySize = gpuMemorySize;
     }
 
-    public double getGpuBoostClock() {
+    public int getGpuBoostClock() {
         return gpuBoostClock;
     }
 
-    public void setGpuBoostClock(double gpuBoostClock) {
+    public void setGpuBoostClock(int gpuBoostClock) {
         this.gpuBoostClock = gpuBoostClock;
     }
 
-    public String getMemory() {
+    public GPU_MFR getGpuMfr() {
+        return gpuMfr;
+    }
+
+    public void setGpuMfr(GPU_MFR gpuMfr) {
+        this.gpuMfr = gpuMfr;
+    }
+
+    public int getMemory() {
         return memory;
     }
 
-    public void setMemory(String memory) {
+    public void setMemory(int memory) {
         this.memory = memory;
     }
 
@@ -111,11 +131,11 @@ public class ComputerSpecRequestDTO {
     }
 
     public String getComCase() {
-        return ComCase;
+        return comCase;
     }
 
     public void setComCase(String comCase) {
-        ComCase = comCase;
+        this.comCase = comCase;
     }
 
     @Override
@@ -123,15 +143,17 @@ public class ComputerSpecRequestDTO {
         return "ComputerSpecRequestDTO{" +
                 "company='" + company + '\'' +
                 ", cpuName='" + cpuName + '\'' +
+                ", cpuMfr=" + cpuMfr +
                 ", gpuCardName='" + gpuCardName + '\'' +
                 ", gpuCoreAmount=" + gpuCoreAmount +
-                ", gptMemorySize=" + gptMemorySize +
+                ", gpuMemorySize=" + gpuMemorySize +
                 ", gpuBoostClock=" + gpuBoostClock +
-                ", memory='" + memory + '\'' +
+                ", gpuMfr=" + gpuMfr +
+                ", memory=" + memory +
                 ", motherBoard='" + motherBoard + '\'' +
                 ", storage='" + storage + '\'' +
                 ", psu='" + psu + '\'' +
-                ", ComCase='" + ComCase + '\'' +
+                ", comCase='" + comCase + '\'' +
                 '}';
     }
 }

@@ -1,7 +1,9 @@
 package com.ohgiraffers.practice20231006.computerRequest;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
+@Embeddable
 public class GPUSpec {
 
     @Column(name = "GPU_CARD_NAME")

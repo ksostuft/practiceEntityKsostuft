@@ -19,18 +19,22 @@ public class ComputerSpecService {
         ComputerSpec computerSpec = new ComputerSpec(
                 computerSpecRequestDTO.getCompany(),
                 computerSpecRequestDTO.getCpuName(),
+                computerSpecRequestDTO.getCpuMfr(),
                 new GPUSpec(
                         computerSpecRequestDTO.getGpuCardName(),
                         computerSpecRequestDTO.getGpuCoreAmount(),
                         computerSpecRequestDTO.getGpuMemorySize(),
                         computerSpecRequestDTO.getGpuBoostClock()
                 ),
+                computerSpecRequestDTO.getGpuMfr(),
                 computerSpecRequestDTO.getMemory(),
                 computerSpecRequestDTO.getMotherBoard(),
                 computerSpecRequestDTO.getStorage(),
                 computerSpecRequestDTO.getPsu(),
                 computerSpecRequestDTO.getComCase()
         );
+
+        computerSpecRepository.save(computerSpec);
     }
 
 }

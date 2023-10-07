@@ -11,10 +11,10 @@ public class ComputerSpecRepository {
     @PersistenceContext
     private EntityManager manager;
 
-    public void keep(ComputerSpec computerSpec) {
+    public void save(ComputerSpec computerSpec) {
         manager.persist(computerSpec);
     }
-    public void contain(ComputerSpec computerSpec) {
+    /*public void contain(ComputerSpec computerSpec) {
         manager.contains(computerSpec);
     }
 
@@ -36,5 +36,5 @@ public class ComputerSpecRepository {
 
     public void remove(ComputerSpec computerSpec) {
         manager.remove(computerSpec);
-    }
+    }*/
 }

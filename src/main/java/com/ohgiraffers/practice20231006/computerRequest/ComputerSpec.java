@@ -10,7 +10,7 @@ public class ComputerSpec {
 
     @Id
     @Column(name = "COM_SPEC_NO")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int comSpecNo;
 
     @Column(name = "COMPANY")
@@ -19,11 +19,19 @@ public class ComputerSpec {
     @Column(name = "CPU_NAME")
     private String cpuName;
 
+    @Column(name = "CPU_MFR")
+    @Enumerated(EnumType.STRING)
+    private CPU_MFR cpuMfr;
+
     @Embedded
     private GPUSpec gpuSpec;
 
+    @Column(name = "GPU_MFR")
+    @Enumerated(EnumType.STRING)
+    private GPU_MFR gpuMfr;
+
     @Column(name = "MEMORY")
-    private String memory;
+    private int memory;
 
     @Column(name = "MOTHERBOARD")
     private String motherBoard;
@@ -35,17 +43,22 @@ public class ComputerSpec {
     private String psu;
 
     @Column(name = "COM_CASE")
-    private String ComCase;
+    private String comCase;
 
-    public ComputerSpec(String company, String cpuName, GPUSpec gpuSpec, String memory, String motherBoard, String storage, String psu, String comCase) {
+    public ComputerSpec() {
+    }
+
+    public ComputerSpec(String company, String cpuName, CPU_MFR cpuMfr, GPUSpec gpuSpec, GPU_MFR gpuMfr, int memory, String motherBoard, String storage, String psu, String comCase) {
         this.company = company;
         this.cpuName = cpuName;
+        this.cpuMfr = cpuMfr;
         this.gpuSpec = gpuSpec;
+        this.gpuMfr = gpuMfr;
         this.memory = memory;
         this.motherBoard = motherBoard;
         this.storage = storage;
         this.psu = psu;
-        ComCase = comCase;
+        this.comCase = comCase;
     }
 
     public int getComSpecNo() {
@@ -60,11 +73,19 @@ public class ComputerSpec {
         return cpuName;
     }
 
+    public CPU_MFR getCpuMfr() {
+        return cpuMfr;
+    }
+
     public GPUSpec getGpuSpec() {
         return gpuSpec;
     }
 
-    public String getMemory() {
+    public GPU_MFR getGpuMfr() {
+        return gpuMfr;
+    }
+
+    public int getMemory() {
         return memory;
     }
 
@@ -81,7 +102,7 @@ public class ComputerSpec {
     }
 
     public String getComCase() {
-        return ComCase;
+        return comCase;
     }
 
     @Override
@@ -90,12 +111,14 @@ public class ComputerSpec {
                 "comSpecNo=" + comSpecNo +
                 ", company='" + company + '\'' +
                 ", cpuName='" + cpuName + '\'' +
+                ", cpuMfr=" + cpuMfr +
                 ", gpuSpec=" + gpuSpec +
-                ", memory='" + memory + '\'' +
+                ", gpuMfr=" + gpuMfr +
+                ", memory=" + memory +
                 ", motherBoard='" + motherBoard + '\'' +
                 ", storage='" + storage + '\'' +
                 ", psu='" + psu + '\'' +
-                ", ComCase='" + ComCase + '\'' +
+                ", comCase='" + comCase + '\'' +
                 '}';
     }
 }
