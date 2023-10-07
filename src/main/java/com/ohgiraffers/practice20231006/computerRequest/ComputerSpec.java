@@ -49,6 +49,7 @@ public class ComputerSpec {
     }
 
     public ComputerSpec(String company, String cpuName, CPU_MFR cpuMfr, GPUSpec gpuSpec, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
+        checkCompatible(cpuMfr, mbCompatible);
         this.company = company;
         this.cpuName = cpuName;
         this.cpuMfr = cpuMfr;
@@ -59,6 +60,12 @@ public class ComputerSpec {
         this.storage = storage;
         this.psu = psu;
         this.comCase = comCase;
+    }
+
+    private void checkCompatible(CPU_MFR cpuMfr, MB_Compatible mbCompatible) {
+        if(!cpuMfr.equals(mbCompatible)) {
+            throw new IllegalArgumentException("CPU와 메인보드와 호환이 되지 않습니다.");
+        }
     }
 
     public int getComSpecNo() {
