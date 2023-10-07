@@ -43,16 +43,4 @@ public class ComputerSpecRepository {
         ComputerSpec computerSpec = find(comSpecNo);
         manager.remove(computerSpec);
     }
-
-    public void detach(ComputerSpec computerSpec) {
-        manager.detach(computerSpec);
-    }
-
-    public void clear() {
-        manager.clear();
-    }
-
-    public void close() {
-        manager.close();
-    }
 }
