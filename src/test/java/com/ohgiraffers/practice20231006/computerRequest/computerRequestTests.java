@@ -1,6 +1,7 @@
 package com.ohgiraffers.practice20231006.computerRequest;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -17,6 +18,13 @@ public class computerRequestTests {
 
     @Autowired
     private ComputerSpecService computerSpecInsertService;
+
+    /* dll-auto가 create이기 때문에 필요함, delete도 이것에 맞춤 */
+    @BeforeEach
+    void testSetSample() {
+        testInsertComSpec("컴디시", "13400F", CPU_MFR.INTEL, "이엠텍 지포스 RTX 4070 Ti GAMINGPRO D6X 12GB", 7680, 12, 2310, 2610, 16,"MSI MAG B760M 박격포", MB_Compatible.INTEL, "SK하이닉스 Platinum P41 M.2 NVMe", "마이크로닉스 Classic II 풀체인지 800W 80PLUS BRONZE 230V EU", "BRAVOTEC GUARDIAN 3100M V2 타이탄 글래스");
+
+    }
 
     private static Stream<Arguments> getComSpec() {
         return Stream.of(
@@ -42,6 +50,12 @@ public class computerRequestTests {
     @MethodSource("getComSpec")
     void testInsertComSpec(String company, String cpuName, CPU_MFR cpuMfr, String gpuCardName, int gpuCoreAmount, int gptMemorySize, int gpuBaseClock, int gpuBoostClock, int memory, String motherBoard, MB_Compatible mbCompatible, String storage, String psu, String comCase) {
         ComputerSpecRequestDTO computerSpecRequestDTO = new ComputerSpecRequestDTO(company, cpuName, cpuMfr,  gpuCardName, gpuCoreAmount, gptMemorySize, gpuBaseClock, gpuBoostClock, memory, motherBoard, mbCompatible, storage, psu, comCase);
+        for(int i = 0; i < 10; i++) {
+            test(computerSpecRequestDTO);
+        }
+    }
+
+    void test(ComputerSpecRequestDTO computerSpecRequestDTO) {
         Assertions.assertDoesNotThrow(
                 () -> computerSpecInsertService.registComSpec(computerSpecRequestDTO)
         );
@@ -107,7 +121,7 @@ public class computerRequestTests {
     /* 테이블 확인하고 해야 합니다. */
     @Test
     void testComSpecCount() {
-        Assertions.assertEquals(6, computerSpecInsertService.findComSpecCount());
+        Assertions.assertEquals(10, computerSpecInsertService.findComSpecCount());
     }
 
     /* update, 견적준 회사 이름 변경하기 */
@@ -123,10 +137,10 @@ public class computerRequestTests {
     /* 5번 이상 insert 한 다음 하는 것을 추천합니다. */
     /* 테이블 확인하고 해야 합니다. */
     @ParameterizedTest
-    @ValueSource(ints = {5})
+    @ValueSource(ints = {7})
     void testRemoveComputerSpec(int comSpecNo) {
         computerSpecInsertService.remove(comSpecNo);
-        Assertions.assertEquals(6, computerSpecInsertService.findComSpecCount());
+        Assertions.assertEquals(9, computerSpecInsertService.findComSpecCount());
         Assertions.assertNull(computerSpecInsertService.findComSpec(comSpecNo));
     }
 }
